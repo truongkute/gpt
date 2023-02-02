@@ -1,0 +1,30 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+#h1 {
+    margin: 2rem;
+    text-align: center;
+}
+#Q {
+    resize: none;
+    width: 40rem;
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+    
+    
+}
+#A {
+    resize: none;
+    width: 40rem;
+    height: 20rem;
+    display: block;
+    margin: 0 auto;
+    
+}
+#submit {
+    margin: 3rem auto;
+    display: block;
+     
+}

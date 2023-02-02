@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="h1">Trợ Lý Ảo</h1>
+    <textarea id="Q"></textarea>
+    
+    <br><br>
+    <textarea id="A" readonly></textarea>
+    <button id="submit">Enter</button>
+    <div id="loading" style="display: none; margin: 3rem; ">Loading...</div>
+    <script>
+      $("#submit").click(function() {
+        $("#loading").show();
+        var api_key = "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";
+        var prompt = $("#prompt").val();
+        $.ajax({
+          type: "POST",
+          url: "https://api.openai.com/v1/engines/text-davinci-002/completions",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + api_key
+          },
+          data: JSON.stringify({
+            "prompt": prompt,
+            "temperature": 0.5,
+            "max_tokens": 1024,
+            "top_p": 1,
+            "frequency_penalty": 0,
+            "presence_penalty": 0
+          }),
+          success: function(response) {
+            $("#loading").hide();
+            $("#response").val(response.choices[0].text);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
